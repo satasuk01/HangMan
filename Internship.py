@@ -41,24 +41,26 @@ def play(playWord, answer, hint, score, wrongGuessed, life):#score
         #print(wrongGuessed, life, playWord)
         
 createWordsArray()
+#
 print(wordArr) #debug
-print("Select Category:")
-for i in range(len(listOfCat)):
-    print(str(i)+": "+listOfCat[i])
-
-selectedCat = int(input())
 while True:
-    if selectedCat>=0 and selectedCat<len(listOfCat):
-       break
-    selectedCat = int(input("Please input valid number"))
+    print("Select Category:")
+    for i in range(len(listOfCat)):
+        print(str(i)+": "+listOfCat[i])
+        
+    selectedCat = int(input())
+    while True:
+        if selectedCat>=0 and selectedCat<len(listOfCat):
+           break
+        selectedCat = int(input("Please input valid number"))
 
-for i in range(len(wordArr[selectedCat])):
-    if i%2 == 1:
-        continue     #skip hint
-    playWord=['_']*len(wordArr[selectedCat][i])
-    wrongGuessed = []
-    score=0
-    life=10
-    #print(playWord,wordArr[selectedCat][i])
-    play(playWord, wordArr[selectedCat][i], wordArr[selectedCat][i+1], score, wrongGuessed, life)
-print("You've cleared this category")
+    for i in range(len(wordArr[selectedCat])):
+        if i%2 == 1:
+            continue     #skip hint
+        playWord=['_']*len(wordArr[selectedCat][i])
+        wrongGuessed = []
+        score=0
+        life=10
+        #print(playWord,wordArr[selectedCat][i])
+        play(playWord, wordArr[selectedCat][i], wordArr[selectedCat][i+1], score, wrongGuessed, life)
+    print("You've cleared this category\n")
